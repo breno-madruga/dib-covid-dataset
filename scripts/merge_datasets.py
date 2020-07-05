@@ -31,7 +31,7 @@ def clean_title(title):
 ########################################################################
 
 # Getting the data.
-df_arxiv = pd.read_csv("../data/prepared/arxiv_covid_19.csv", header=0,
+df_arxiv = pd.read_csv("data/prepared/arxiv_covid_19.csv", header=0,
     dtype={"id": "str"})
 
 # Changing the type of features.
@@ -50,7 +50,7 @@ df_arxiv.title = df_arxiv.title.apply(clean_title)
 ########################################################################
 
 # Getting the data.
-df_biorxiv = pd.read_csv("../data/prepared/biorxiv_covid_19.csv", header=0,
+df_biorxiv = pd.read_csv("data/prepared/biorxiv_covid_19.csv", header=0,
     dtype={"id": "str"})
 
 # Changing the type of features.
@@ -66,7 +66,7 @@ df_biorxiv.title = df_biorxiv.title.apply(clean_title)
 ########################################################################
 
 # Getting the data.
-df_pubmed = pd.read_csv("../data/prepared/pubmed_covid_19.csv", header=0,
+df_pubmed = pd.read_csv("data/prepared/pubmed_covid_19.csv", header=0,
     dtype={"pubmed_id": "str"})
 
 # Changing the type of features.
@@ -89,7 +89,7 @@ df_pubmed.title.loc[df_pubmed.title.notnull()] = df_pubmed.title.loc[
 ########################################################################
 
 # Getting the data.
-df_scopus = pd.read_csv("../data/prepared/scopus_covid_19.csv", header=0,
+df_scopus = pd.read_csv("data/prepared/scopus_covid_19.csv", header=0,
     dtype={"id": "str", "eid": "str", "pii": "str", "pubmed_id": "str"})
 
 # Changing the type of features.
@@ -152,4 +152,4 @@ df_final.replace({np.nan: None}, inplace=True)
 df_final.rename(columns={"source": "data_source"}, inplace=True)
 
 # Exporting the final dataset to CSV file.
-df_final.to_csv("../data/raw/final_raw.csv", index=False, quoting=csv.QUOTE_ALL)
+df_final.to_csv("data/raw/final_raw.csv", index=False, quoting=csv.QUOTE_ALL)
