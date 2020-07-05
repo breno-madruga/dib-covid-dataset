@@ -1,0 +1,3 @@
+outs:
+- md5: 578235ffff6979c4b5e105e18dda5402
+  path: scopus_raw.csv
