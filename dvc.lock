@@ -1,0 +1,48 @@
+preprocess:
+  cmd: python scripts/preprocess.py
+  deps:
+  - path: data/raw/arxiv_raw.csv
+    md5: 3443082586f8d4711b6f665dbc896193
+  - path: data/raw/biorxiv_raw.csv
+    md5: b46ccc80bc9fece6bd918399ce995ec8
+  - path: data/raw/pubmed_raw.csv
+    md5: 2ccc57c6adbb66463cb3ce9fd67f626a
+  - path: data/raw/scopus_raw.csv
+    md5: 578235ffff6979c4b5e105e18dda5402
+  - path: scripts/preprocess.py
+    md5: 3c0b2a2b55597d6e83e28301f83d68ad
+  outs:
+  - path: data/prepared/arxiv_covid_19.csv
+    md5: af8015405b5af13109089eb61fc44180
+  - path: data/prepared/biorxiv_covid_19.csv
+    md5: 9cdd7b066d32b81a278f6023e5b17b99
+  - path: data/prepared/pubmed_covid_19.csv
+    md5: 18c6635458576c258d44c55689359dc4
+  - path: data/prepared/scopus_covid_19.csv
+    md5: 7f3f0f5c64066602673ff9068022ca11
+merge:
+  cmd: python scripts/merge_datasets.py
+  deps:
+  - path: data/prepared/arxiv_covid_19.csv
+    md5: af8015405b5af13109089eb61fc44180
+  - path: data/prepared/biorxiv_covid_19.csv
+    md5: 9cdd7b066d32b81a278f6023e5b17b99
+  - path: data/prepared/pubmed_covid_19.csv
+    md5: 18c6635458576c258d44c55689359dc4
+  - path: data/prepared/scopus_covid_19.csv
+    md5: 7f3f0f5c64066602673ff9068022ca11
+  - path: scripts/merge_datasets.py
+    md5: 8e7e3476183171089a7735ddd30b1084
+  outs:
+  - path: data/raw/final_raw.csv
+    md5: 7479ac0b6588f20016f9ebd090939f7f
+preprocess_final:
+  cmd: python scripts/preprocess.py final
+  deps:
+  - path: data/raw/final_raw.csv
+    md5: 7479ac0b6588f20016f9ebd090939f7f
+  - path: scripts/preprocess.py
+    md5: b42e563e13e6085d4c4ca4362f939780
+  outs:
+  - path: data/prepared/final_covid_19.csv
+    md5: 775fa35c47b032950b31890eba02bbce

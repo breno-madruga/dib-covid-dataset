@@ -1,0 +1,31 @@
+stages:
+  preprocess:
+    cmd: python scripts/preprocess.py
+    deps:
+    - data/raw/arxiv_raw.csv
+    - data/raw/biorxiv_raw.csv
+    - data/raw/pubmed_raw.csv
+    - data/raw/scopus_raw.csv
+    - scripts/preprocess.py
+    outs:
+    - data/prepared/arxiv_covid_19.csv
+    - data/prepared/biorxiv_covid_19.csv
+    - data/prepared/pubmed_covid_19.csv
+    - data/prepared/scopus_covid_19.csv
+  merge:
+    cmd: python scripts/merge_datasets.py
+    deps:
+    - data/prepared/arxiv_covid_19.csv
+    - data/prepared/biorxiv_covid_19.csv
+    - data/prepared/pubmed_covid_19.csv
+    - data/prepared/scopus_covid_19.csv
+    - scripts/merge_datasets.py
+    outs:
+    - data/raw/final_raw.csv
+  preprocess_final:
+    cmd: python scripts/preprocess.py final
+    deps:
+    - data/raw/final_raw.csv
+    - scripts/preprocess.py
+    outs:
+    - data/prepared/final_covid_19.csv
