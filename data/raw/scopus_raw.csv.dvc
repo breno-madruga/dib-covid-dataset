@@ -1,3 +1,4 @@
 outs:
-- md5: 578235ffff6979c4b5e105e18dda5402
+- md5: b710ece2fff58f13adc49163380f5fc0
   path: scopus_raw.csv
+  size: 1314681357

@@ -1,0 +1,4 @@
+[core]
+    remote = dib_remote
+['remote "dib_remote"']
+    url = gdrive://1xrDRcIz9kEkaY8U_XPUTaT7d0SlYKoqE
