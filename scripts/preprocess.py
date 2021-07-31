@@ -61,12 +61,9 @@ if __name__ == "__main__":
         Preprocess.factory_process(Preprocess.BIORXIV).process_raw_data(
             "data/raw/biorxiv_raw.csv", "data/prepared/biorxiv_covid_19.csv")
         Preprocess.factory_process(Preprocess.PUBMED).process_raw_data(
-            "data/raw/pubmed_raw.csv", "data/prepared/pubmed_covid_19.csv",
-            {"pubmed_id": "str"})
+            "data/raw/pubmed_raw.csv", "data/prepared/pubmed_covid_19.csv", object)
         Preprocess.factory_process(Preprocess.SCOPUS).process_raw_data(
-            "data/raw/scopus_raw.csv", "data/prepared/scopus_covid_19.csv",
-            {"id": "str", "eid": "str", "pii": "str", "pubmed_id": "str"})
+            "data/raw/scopus_raw.csv", "data/prepared/scopus_covid_19.csv", object)
     elif sys.argv[1] == "final":
         Preprocess.factory_process(Preprocess.FINAL).process_raw_data(
-            "data/raw/final_raw.csv", "data/prepared/final_covid_19.csv",
-            {"id": "str", "pubmed_id": "str"})
+            "data/raw/final_raw.csv", "data/prepared/final_covid_19.csv", object)

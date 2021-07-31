@@ -6,7 +6,7 @@ This repository is responsible for versioning of the required source code to gen
 
 ## Input
 
-The raw data collected by the Jupyter Notebooks that are contained into the folder "notebooks/collect".
+The raw data collected by the Jupyter Notebooks, which are contained into the folder "notebooks/collect".
 
 The data sources are:
 - [arXiv](https://arxiv.org/covid19search)
@@ -41,6 +41,21 @@ The features of the resulting dataset are:
 * references: the list of references data (authors, title, DOI and ID).
 * data_source: the source database of a manuscript.
 * period: the combination of the year and month, respectively, extracted from the feature *publication_date*.
+
+## Steps for generating the dataset
+
+For the execution of the following steps, I will consider that you already cloned/downloaded this repository, as well as the steps will be executed via shell/prompt within the folder of this repository.
+
+For reusing the raw data that I already collected, you can do the following steps:
+
+1. Download the raw data from the remote data repository. Execute the following command:
+    ```
+    dvc pull
+    ```
+2. Execute the preprocessing pipeline. So, you can execute the following command:
+    ```
+    dvc repro
+    ```
 
 ## Citation
 

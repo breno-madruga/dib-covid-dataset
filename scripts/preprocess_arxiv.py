@@ -19,6 +19,7 @@ from preprocess import Preprocess
 ########################################################################
 
 class ProcessArxiv(Preprocess):
+
     # Cleaning and preprocessing the dataframe.
     def _preprocess(self):
         # Defining the "None" value for the "NaN" values.
@@ -38,7 +39,8 @@ class ProcessArxiv(Preprocess):
                         re.sub(r"\\?%", "@PER@CENT@", y))).strip())))))
 
         # Normalizing the feature "authors".
-        self._dataframe.authors = [tuple([{"name": author} for author in eval(authors)])
+        self._dataframe.authors = [tuple([{"id": str(hash("{} - {}".format(author, "arXiv"))),
+                                           "name": author} for author in eval(authors)])
                                    for authors in self._dataframe.authors]
 
         # Normalizing the feature "date".
