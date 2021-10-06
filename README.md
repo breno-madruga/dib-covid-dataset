@@ -44,15 +44,22 @@ The features of the resulting dataset are:
 
 ## Steps for generating the dataset
 
-For the execution of the following steps, I will consider that you already cloned/downloaded this repository, as well as the steps will be executed via shell/prompt within the folder of this repository.
+For the execution of the following steps, I will consider that you already cloned/downloaded this repository, as well as the steps will be executed via shell/prompt within the folder of this repository. In addition, an essential prerequisite is that DVC is already installed on your machine.
 
-For reusing the raw data that I already collected, you can do the following steps:
+For reusing the raw data that I already collected and the pipeline created, you can do the following steps:
 
-1. Download the raw data from the remote data repository. Execute the following command:
+1. Configure the remote to use the read-only service account. Execute the following commands:
+    ```
+    dvc remote modify dib_remote --local gdrive_use_service_account true
+    dvc remote modify dib_remote --local gdrive_service_account_json_file_path credentials_read_only.json
+    ```
+2. Download the raw data from the remote data repository. Execute the following command:
     ```
     dvc pull
     ```
-2. Execute the preprocessing pipeline. So, you can execute the following command:
+    **Warning:** Some warnings will be showed when the ***dvc pull*** command is executed. Ignore them because they refer to the intermediate files used by our pipeline. Just check that the *arXiv*, *bioRxiv*, *PubMed* and *Scopus* raw files were downloaded correctly and located in the ***data/raw*** folder.
+
+3. Execute the preprocessing pipeline. So, you can execute the following command:
     ```
     dvc repro
     ```
