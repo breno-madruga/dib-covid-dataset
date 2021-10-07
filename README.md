@@ -48,18 +48,9 @@ For the execution of the following steps, I will consider that you already clone
 
 For reusing the raw data that I already collected and the pipeline created, you can do the following steps:
 
-1. Configure the remote to use the read-only service account. Execute the following commands:
-    ```
-    dvc remote modify dib_remote --local gdrive_use_service_account true
-    dvc remote modify dib_remote --local gdrive_service_account_json_file_path credentials_read_only.json
-    ```
-2. Download the raw data from the remote data repository. Execute the following command:
-    ```
-    dvc pull
-    ```
-    **Warning:** Some warnings will be showed when the ***dvc pull*** command is executed. Ignore them because they refer to the intermediate files used by our pipeline. Just check that the *arXiv*, *bioRxiv*, *PubMed* and *Scopus* raw files were downloaded correctly and located in the ***data/raw*** folder.
+1. Download the raw data, that is available on Google Drive, and put them in the ***data/raw*** folder. You can download these files from this [link](https://drive.google.com/drive/folders/14PzDoJI2YwvxNCowefLxbpEQl0FUY1nm?usp=sharing).
 
-3. Execute the preprocessing pipeline. So, you can execute the following command:
+2. Execute the preprocessing pipeline. So, you can execute the following command:
     ```
     dvc repro
     ```
